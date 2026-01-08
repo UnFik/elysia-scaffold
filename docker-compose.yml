@@ -1,0 +1,16 @@
+services:
+  app:
+    container_name: finance-tracker-app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "3001:3001"
+    environment:
+      - DATABASE_URL=${DATABASE_URL:-postgres://postgres:postgres@localhost:5432/finance_tracker}
+      - BETTER_AUTH_SECRET=${BETTER_AUTH_SECRET:-your-better-auth-secret-change-in-production}
+      - BETTER_AUTH_URL=${BETTER_AUTH_URL:-http://localhost:3001}
+      - PORT=${PORT:-3001}
+      - NODE_ENV=${NODE_ENV:-development}
+    restart: unless-stopped
+    

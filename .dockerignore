@@ -1,0 +1,13 @@
+node_modules
+.git
+.gitignore
+.env
+.env.local
+.env.*.local
+*.md
+.DS_Store
+dist
+sqlite
+*.sqlite
+*.log
+
