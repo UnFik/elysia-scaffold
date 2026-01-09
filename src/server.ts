@@ -1,5 +1,4 @@
 import cors from "@elysiajs/cors";
-import swagger from "@elysiajs/swagger";
 import { Elysia, ValidationError } from "elysia";
 import authController from "./api/auth/auth.controller";
 import categoriesController from "./api/categories/categories.controller";
@@ -7,6 +6,7 @@ import transactionsController from "./api/transactions/transactions.controller";
 import walletsController from "./api/wallets/wallets.controller";
 import { unprocessable } from "./common/utils";
 import { auth } from "./common/auth";
+import { openapi } from '@elysiajs/openapi'
 
 export const app = new Elysia({ prefix: "/api" })
   .use(cors({
@@ -15,7 +15,7 @@ export const app = new Elysia({ prefix: "/api" })
   }))
   .mount(auth.handler)
   .use(
-    swagger({
+    openapi({
       documentation: {
         info: {
           title: "Finance Tracker API",
